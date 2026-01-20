@@ -7,7 +7,7 @@
 <style>
   * { margin: 0; padding: 0; box-sizing: border-box; font-family: Arial, sans-serif; }
   body { background: #f0f4f8; display: flex; height: 100vh; overflow: hidden; position: relative; }
-  
+
   /* Sidebar */
   #sidebar {
     width: 250px;
@@ -60,7 +60,6 @@
     font-style: italic;
   }
 
-  /* Responsive scrolling for mobile */
   @media(max-width: 768px){
     body { flex-direction: column; }
     #sidebar { width: 100%; height: auto; }
@@ -69,7 +68,6 @@
 </head>
 <body>
 
-<!-- Sidebar -->
 <div id="sidebar">
   <h2>Categories</h2>
   <button onclick="showCategory('arithmetic')">Basic Arithmetic</button>
@@ -78,6 +76,103 @@
   <button onclick="showCategory('algebra')">Algebra</button>
   <button onclick="showCategory('geometry')">Geometry</button>
   <button onclick="showCategory('trigonometry')">Trigonometry</button>
+  <button onclick="showCategory('coordinate')">Coordinate Geometry</button>
+  <button onclick="showCategory('statistics')">Statistics & Probability</button>
+  <button onclick="showCategory('calculus')">Calculus</button>
+  <button onclick="showCategory('advanced')">Advanced / Other</button>
+</div>
+
+<div id="main">
+  <h1>Demetillo's Formula Hub</h1>
+  <div id="content" class="card">
+    <p>Select a category from the sidebar to see formulas!</p>
+  </div>
+</div>
+
+<div id="signature">by Demetillo</div>
+
+<script>
+const formulaData = {
+  arithmetic: [
+    {title: "Addition", formula: "a + b", example: "2 + 3 = 5"},
+    {title: "Subtraction", formula: "a - b", example: "5 - 2 = 3"},
+    {title: "Multiplication", formula: "a × b", example: "2 × 3 = 6"},
+    {title: "Division", formula: "a ÷ b", example: "6 ÷ 2 = 3"},
+    {title: "Order of Operations (PEMDAS)", formula: "( ) → ^ → × / ÷ → + / −", example: "2 + 3 × 4 = 14"}
+  ],
+  fractions: [
+    {title: "Fraction Addition", formula: "a/b + c/d = (ad + bc)/bd", example: "1/2 + 1/3 = 5/6"},
+    {title: "Fraction Subtraction", formula: "a/b - c/d = (ad - bc)/bd", example: "3/4 - 1/2 = 1/4"},
+    {title: "Fraction Multiplication", formula: "a/b × c/d = ac/bd", example: "2/3 × 3/4 = 1/2"},
+    {title: "Fraction Division", formula: "a/b ÷ c/d = ad/bc", example: "2/3 ÷ 3/4 = 8/9"},
+    {title: "Decimal ↔ Fraction", formula: "Convert by dividing or multiplying by 10,100…", example: "0.75 = 3/4"}
+  ],
+  percentage: [
+    {title: "Percentage Formula", formula: "Percentage = (Part / Whole) × 100", example: "20/50 × 100 = 40%"},
+    {title: "Percentage Increase/Decrease", formula: "Change % = (New − Old)/Old × 100", example: "Old=50, New=60 → 20% increase"},
+    {title: "Ratio & Proportion", formula: "a:b = c:d", example: "2:3 = 4:6"},
+    {title: "Direct & Inverse Proportion", formula: "Direct: y ∝ x, Inverse: y ∝ 1/x", example: "y=2x, y=6/x"}
+  ],
+  algebra: [
+    {title: "Linear Equations", formula: "y = mx + b", example: "y = 2x + 3"},
+    {title: "Quadratic Equations", formula: "ax² + bx + c = 0", example: "x² + 5x + 6 = 0 → (x+2)(x+3)=0"},
+    {title: "Difference of Squares", formula: "a² - b² = (a-b)(a+b)", example: "x² - 9 = (x-3)(x+3)"},
+    {title: "Perfect Square Trinomial", formula: "a² + 2ab + b² = (a+b)²", example: "x² + 6x + 9 = (x+3)²"},
+    {title: "Sum & Product of Roots", formula: "x₁ + x₂ = -b/a, x₁x₂ = c/a", example: "x² -5x +6 =0 → Sum=5, Product=6"}
+  ],
+  geometry: [
+    {title: "Area of Square", formula: "A = a²", example: "a=4 → A=16"},
+    {title: "Area of Rectangle", formula: "A = l × w", example: "l=5, w=3 → A=15"},
+    {title: "Area of Triangle", formula: "A = 1/2 × b × h", example: "b=6, h=4 → A=12"},
+    {title: "Area of Circle", formula: "A = πr²", example: "r=3 → A≈28.27"},
+    {title: "Volume of Cube", formula: "V = a³", example: "a=3 → V=27"},
+    {title: "Volume of Sphere", formula: "V = 4/3 π r³", example: "r=2 → V≈33.51"},
+    {title: "Pythagorean Theorem", formula: "a² + b² = c²", example: "a=3, b=4 → c=5"}
+  ],
+  trigonometry: [
+    {title: "SOHCAHTOA", formula: "Sin=Opp/Hyp, Cos=Adj/Hyp, Tan=Opp/Adj", example: "Opp=3, Hyp=5 → Sinθ=3/5"},
+    {title: "Pythagorean Identities", formula: "sin²θ + cos²θ = 1", example: "sin60°² + cos60°² = 0.75 + 0.25 =1"},
+    {title: "Angle Sum/Difference", formula: "sin(A±B)=sinAcosB±cosAsinB", example: "sin(30+60)=sin30cos60+cos30sin60=1"}
+  ],
+  coordinate: [
+    {title: "Distance Formula", formula: "d = √((x₂-x₁)² + (y₂-y₁)²)", example: "(0,0),(3,4) → d=5"},
+    {title: "Midpoint Formula", formula: "M = ((x₁+x₂)/2 , (y₁+y₂)/2)", example: "(0,0),(4,4) → M=(2,2)"},
+    {title: "Slope Formula", formula: "m = (y₂-y₁)/(x₂-x₁)", example: "(1,2),(3,6) → m=2"},
+    {title: "Equation of a Line", formula: "y - y₁ = m(x - x₁)", example: "m=2, point(1,2) → y-2=2(x-1)"}
+  ],
+  statistics: [
+    {title: "Mean", formula: "Average = Sum/Count", example: "1,2,3 → Mean=2"},
+    {title: "Median", formula: "Middle value of sorted data", example: "1,3,5 → Median=3"},
+    {title: "Mode", formula: "Most frequent value", example: "1,2,2,3 → Mode=2"},
+    {title: "Standard Deviation", formula: "σ = √(Σ(xi-μ)²/N)", example: "Data:2,4,4,4,5,5,7,9 → σ≈2"},
+    {title: "Variance", formula: "σ² = Σ(xi-μ)²/N", example: "Data:2,4,4,4,5,5,7,9 → σ²≈4"}
+  ],
+  calculus: [
+    {title: "Derivative (Power Rule)", formula: "d/dx(xⁿ) = n*xⁿ⁻¹", example: "f(x)=x³ → f'(x)=3x²"},
+    {title: "Integral (Indefinite)", formula: "∫xⁿ dx = xⁿ⁺¹/(n+1) + C", example: "∫x² dx = x³/3 + C"},
+    {title: "Limit Definition", formula: "lim x→a f(x) = L", example: "lim x→2 (x²-4)/(x-2) = 4"}
+  ],
+  advanced: [
+    {title: "Exponent Rules", formula: "a^m * a^n = a^(m+n)", example: "2² * 2³ = 2⁵ =32"},
+    {title: "Logarithm Rules", formula: "log(ab)=log a + log b", example: "log10 + log100 = log1000 =3"},
+    {title: "Binomial Theorem", formula: "(a+b)^2 = a² + 2ab + b²", example: "(x+1)² = x² + 2x + 1"}
+  ]
+};
+
+function showCategory(category){
+  const contentDiv = document.getElementById('content');
+  contentDiv.innerHTML = "";
+  formulaData[category].forEach(item=>{
+    const card = document.createElement('div');
+    card.className = "card";
+    card.innerHTML = `<h2>${item.title}</h2><p><b>Formula:</b> ${item.formula}</p><p><b>Example:</b> ${item.example}</p>`;
+    contentDiv.appendChild(card);
+  });
+}
+</script>
+
+</body>
+</html>  <button onclick="showCategory('trigonometry')">Trigonometry</button>
   <button onclick="showCategory('coordinate')">Coordinate Geometry</button>
   <button onclick="showCategory('statistics')">Statistics & Probability</button>
   <button onclick="showCategory('calculus')">Calculus</button>
