@@ -148,4 +148,196 @@ function showCategory(category){
 </script>
 
 </body>
+</html><!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kratos Hub</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; font-family: Arial, sans-serif; }
+  body { background: #f0f4f8; display: flex; height: 100vh; overflow: hidden; }
+
+  #sidebar {
+    width: 250px;
+    background: #2c3e50;
+    color: white;
+    padding: 20px;
+    overflow-y: auto;
+  }
+  #sidebar h2 { margin-bottom: 10px; }
+  #sidebar button {
+    display: block;
+    width: 100%;
+    background: #34495e;
+    border: none;
+    color: white;
+    padding: 10px;
+    margin-bottom: 5px;
+    border-radius: 5px;
+    text-align: left;
+    cursor: pointer;
+  }
+  #sidebar button:hover { background: #1abc9c; }
+
+  #main {
+    flex: 1;
+    padding: 20px;
+    overflow-y: auto;
+  }
+
+  .card {
+    background: white;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    margin-bottom: 20px;
+  }
+
+  h1 { text-align: center; margin-bottom: 20px; }
+  h2 { color: #2980b9; margin-bottom: 10px; }
+  p { margin-bottom: 8px; }
+
+  #contact {
+    background: white;
+    padding: 15px;
+    border-top: 2px solid #2c3e50;
+    text-align: center;
+    margin-top: 20px;
+  }
+
+  @media(max-width:768px){
+    body { flex-direction: column; }
+    #sidebar { width: 100%; }
+  }
+</style>
+</head>
+<body>
+
+<div id="sidebar">
+  <h2>Categories</h2>
+  <button onclick="showCategory('arithmetic')">Basic Arithmetic</button>
+  <button onclick="showCategory('fractions')">Fractions & Decimals</button>
+  <button onclick="showCategory('percentage')">Percentage & Ratio</button>
+  <button onclick="showCategory('algebra')">Algebra</button>
+  <button onclick="showCategory('geometry')">Geometry</button>
+  <button onclick="showCategory('trigonometry')">Trigonometry</button>
+  <button onclick="showCategory('statistics')">Statistics</button>
+</div>
+
+<div id="main">
+  <h1>Kratos Hub</h1>
+
+  <div id="content" class="card">
+    <p>Select a category to view formulas.</p>
+  </div>
+
+  <div id="contact">
+    <strong>Contact Us</strong><br>
+    Gmail: demetillojared@gmail.com <br>
+    Contact No: 09157959424
+  </div>
+</div>
+
+<script>
+const formulaData = {
+
+arithmetic: `
+<h2>Basic Arithmetic</h2>
+<p><strong>Addition:</strong> a + b <br> Example: 2 + 3 = 5</p>
+<p><strong>Subtraction:</strong> a - b <br> Example: 5 - 2 = 3</p>
+<p><strong>Multiplication:</strong> a × b <br> Example: 4 × 3 = 12</p>
+<p><strong>Division:</strong> a ÷ b <br> Example: 10 ÷ 2 = 5</p>
+`,
+
+fractions: `
+<h2>Fractions & Decimals</h2>
+<p><strong>Add:</strong> a/b + c/d = (ad+bc)/bd <br> Example: 1/2 + 1/3 = 5/6</p>
+<p><strong>Multiply:</strong> a/b × c/d = ac/bd <br> Example: 2/3 × 3/4 = 1/2</p>
+<p><strong>Decimal to Fraction:</strong> 0.75 = 3/4</p>
+`,
+
+percentage: `
+<h2>Percentage & Ratio</h2>
+<p><strong>Percentage:</strong> (Part/Whole) × 100 <br> Example: 20/50 × 100 = 40%</p>
+<p><strong>Ratio:</strong> a:b = c:d <br> Example: 2:3 = 4:6</p>
+`,
+
+algebra: `
+<h2>Algebra</h2>
+<p><strong>Linear:</strong> y = mx + b <br> Example: y = 2x + 3</p>
+<p><strong>Quadratic:</strong> ax² + bx + c = 0 <br> Example: x² + 5x + 6 = 0</p>
+<p><strong>Difference of Squares:</strong> a² - b² = (a-b)(a+b)</p>
+`,
+
+geometry: `
+<h2>Geometry</h2>
+<p><strong>Area of Square:</strong> A = a² <br> Example: a=4 → 16</p>
+<p><strong>Area of Circle:</strong> A = πr² <br> Example: r=3 → 28.27</p>
+<p><strong>Volume of Cube:</strong> V = a³</p>
+`,
+
+trigonometry: `
+<h2>Trigonometry</h2>
+<p><strong>Sine:</strong> sinθ = opposite/hypotenuse</p>
+<p><strong>Cosine:</strong> cosθ = adjacent/hypotenuse</p>
+<p><strong>Tangent:</strong> tanθ = opposite/adjacent</p>
+`,
+
+statistics: `
+<h2>Statistics</h2>
+<p><strong>Mean:</strong> Sum / Total</p>
+<p><strong>Median:</strong> Middle value</p>
+<p><strong>Probability:</strong> Favorable / Total outcomes</p>
+`
+};
+
+function showCategory(category){
+  document.getElementById("content").innerHTML = formulaData[category];
+}
+</script>
+
+</body>
+</html
+percentage: `
+<h2>Percentage & Ratio</h2>
+<p><strong>Percentage:</strong> (Part/Whole) × 100 <br> Example: 20/50 × 100 = 40%</p>
+<p><strong>Ratio:</strong> a:b = c:d <br> Example: 2:3 = 4:6</p>
+`,
+
+algebra: `
+<h2>Algebra</h2>
+<p><strong>Linear:</strong> y = mx + b <br> Example: y = 2x + 3</p>
+<p><strong>Quadratic:</strong> ax² + bx + c = 0 <br> Example: x² + 5x + 6 = 0</p>
+<p><strong>Difference of Squares:</strong> a² - b² = (a-b)(a+b)</p>
+`,
+
+geometry: `
+<h2>Geometry</h2>
+<p><strong>Area of Square:</strong> A = a² <br> Example: a=4 → 16</p>
+<p><strong>Area of Circle:</strong> A = πr² <br> Example: r=3 → 28.27</p>
+<p><strong>Volume of Cube:</strong> V = a³</p>
+`,
+
+trigonometry: `
+<h2>Trigonometry</h2>
+<p><strong>Sine:</strong> sinθ = opposite/hypotenuse</p>
+<p><strong>Cosine:</strong> cosθ = adjacent/hypotenuse</p>
+<p><strong>Tangent:</strong> tanθ = opposite/adjacent</p>
+`,
+
+statistics: `
+<h2>Statistics</h2>
+<p><strong>Mean:</strong> Sum / Total</p>
+<p><strong>Median:</strong> Middle value</p>
+<p><strong>Probability:</strong> Favorable / Total outcomes</p>
+`
+};
+
+function showCategory(category){
+  document.getElementById("content").innerHTML = formulaData[category];
+}
+</script>
+
+</body>
 </html>
